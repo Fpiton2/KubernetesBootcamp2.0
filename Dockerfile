@@ -1,2 +1,7 @@
-From ubuntu:21.04
-Run apt-get update && apt-get install curl --yes && apt-get install vim --yess
+FROM node:14.16.1-alpine3.13
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 8080
+CMD ["node", "index.js"]
